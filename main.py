@@ -58,3 +58,10 @@ def delete_task(task_id: int):
             del fake_db[index]
             return {"mensaje": "Tarea eliminada"}
     raise HTTPException(status_code=404, detail="Tarea no encontrada")
+
+import os
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))  # Usa el puerto asignado por Railway
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
